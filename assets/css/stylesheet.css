@@ -1,3 +1,15 @@
-.gameboard{
-    width: 28rem;
+#scoreboard{
+    width: 78%;
+}
+
+#question{
+    width: 62%;
+}
+
+#answers{
+    width: 78%;
+}
+
+li{
+
 }

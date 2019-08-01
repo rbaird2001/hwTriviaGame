@@ -14,16 +14,24 @@
 <body>
     <section class="m-5">
         <div class="row">
-            <div class=col-sm>
-                <div class="d-flex justify-content-end align-items-start w-75">
-                    <span class="badge badge-info">99</span>
+            <div class="col-sm d-flex justify-content-center">
+                <div id="scoreboard" class="d-flex justify-content-center">
+                    <button type="button" class="bg-info">Correct:
+                        <span id=correctAnswers class="badge badge-info">0
+                        </span>
+                    </button>
+                    <button type="button" class="bg-info">Incorrect:
+                        <span id="incorrectAnswers" class="badge badge-info">0
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
+        <div class="row my-1"></div>
         <div class="row">
             <div class="col-sm">
                 <div class="d-flex justify-content-center">
-                    <div id="question" class="jumbotron w-75">
+                    <div id="question" class="jumbotron">
                     </div>
                 </div>
             </div>

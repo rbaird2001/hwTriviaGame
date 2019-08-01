@@ -119,3 +119,14 @@ function endGame(){
 }
 
 
+//This is a closure. Look it up.
+// function generateResponse(boolCorrect){
+//     return function () {
+//         if(boolCorrect){
+//             correct();
+//         }
+//         else{
+//             incorrect();
+//         }
+//     }
+// }

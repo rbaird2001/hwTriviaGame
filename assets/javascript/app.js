@@ -1,6 +1,9 @@
 var seconds = 1000;
-var currQ = 0;
-var timerQ ;
+var currQuestion = 0;
+var timerQuestion ;
+var correct=0 ;
+var incorrect=0 ;
+
 var arrQuestions = [
     {
         question: "I am a: ",played: false,answers: [
@@ -15,7 +18,7 @@ var arrLetterAssignment = ["A. ","B. ","C. ","D. ", "E. ","F. ","G. "];
 
 function initQuestion(){
     //TODO add command to remove response banner if exists.
-    let quest = arrQuestions[currQ];
+    let quest = arrQuestions[currQuestion];
     $("#answers li").remove();
     $("#question").removeClass("bg-success bg-danger").html("<p>" + quest.question + "</p>");
     for(i=0;i<quest.answers.length;i++){
@@ -31,35 +34,39 @@ function initQuestion(){
             .append("<br>")
             .appendTo("#answers");
     }
-    timerQ = setTimeout(incorrect,31*seconds);
+    timerQuestion = setTimeout(noAnswer,31*seconds);
 }
 
 function generateResponse(boolCorrect){
     return function () {
-        clearTimeout(timerQ)
+        clearTimeout(timerQuestion);
         if(boolCorrect){
             correct($(this));
         }
         else{
-            incorrect();
+            incorrect($(this));
         }
     }
-
 }
 
-function correct(correctAnswer){
-    
+function correct(correctAnswer){ 
     $("#question").addClass("bg-success").html("<h2>CORRECT!</h2>")
-    correctAnswer.addClass("bg-warning");
-    setTimeout(initQuestion,5*seconds);
+    correctAnswer.addClass("bg-success");
+    correct++
+    setTimeout(initQuestion,7*seconds);
 }
 
-function incorrect(){
-    //TODO create incorrect display that includes the correct answer. 
-    //   This will be some sort of html element created by Jquery.
-    //TODO create timer to display answer for five seconds.
+function incorrect(incorrectAnswer){
     $("#question").addClass("bg-danger").html("<h2>Incorrect.</h2>");
-    $("li").filter("[data-correct=true]").addClass("bg-warning");
-    setTimeout(initQuestion,5*seconds);
+    incorrectAnswer.addClass("bg-danger")
+    $("li").filter("[data-correct=true]").addClass("bg-success");
+    incorrect++
+    setTimeout(initQuestion,7*seconds);
 }
-   
+
+function noAnswer(){
+    $("#question").addClass("bg-danger").html("<h2>No answer.</h2>");
+    $("li").filter("[data-correct=true]").addClass("bg-success");
+    incorrect++
+    setTimeout(initQuestion,7*seconds);
+}

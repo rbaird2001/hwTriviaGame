@@ -7,31 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <title>HP Trivia</title>
 </head>
 
 <body>
-    <section class="m-5">
-        <div class="row">
-            <div class="col-sm">
-                <div class="d-flex justify-content-center">
-                    <div id="question" class="jumbotron" style="width: 28rem;">
+    <section class="mx-auto my-5">
+        <div id="mainContainer" class="container w-75 cstmContainer mt-5">
+        <div id="scoreboardRow"class="row">
+            <div class="col-sm-12">
+                <div id="scoreboard" class="container d-flex justify-content-center w-50">
+                    <button type="button" class="btn-lg mx-1 rounded scoreButton">Correct:
+                        <span id=correctAnswers class="badge badge-success">0
+                        </span>
+                    </button>
+                    <button type="button" class="btn-lg mx-1 rounded scoreButton">Incorrect:
+                        <span id="incorrectAnswers" class="badge badge-danger">0
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row my-1"></div>
+        <div id="questionRow" class="row">
+            <div class="col-md">
+                <div id="questionContainer" class="container d-flex justify-content-center w-75 cstmContainer">
+                    <div id="question" class="jumbotron w-100">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row"></div>
-        <div class="row">
-            <div class="col-sm">
-                <div class="d-flex justify-content-center">
-                    <div class="card" style="width: 18rem;">
-                        <ul id="answers" class="list-group list-group-flush">
-                        </ul>
-                    </div>
-                </div>
+    
+        <div id="answerGroupRow" class="row">
+            <div id="answers" class="container w-75 cstmContainer">
             </div>
         </div>
-
+    </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

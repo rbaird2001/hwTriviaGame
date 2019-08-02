@@ -4,7 +4,7 @@ var questionTimer;
 var questionCountdown;
 var answerSelected = true
 var setQuestionTime = 21;
-var setResponseTime = 4;
+var setResponseTime = 1;
 var decrement = setQuestionTime
 var countCorrect = 0;
 var countIncorrect = 0;
@@ -148,7 +148,7 @@ function endGame() {
     switch (true) {
         case score < 21:
             wizLevel = "Dursleys";
-            wizLeveImg = "dursleys.jpg"
+            wizLevelImg = "dursleys.jpg"
             break;
         case score < 41:
             wizLevel = "Squib";
@@ -166,9 +166,19 @@ function endGame() {
             wizLevel = "Headmaster";
             wizLevelImg = "headmaster.jpg"
     }
-
-
-    $("#question").removeClass("bg-success bg-danger").html("Game Over");
+    let endGameResults01 = "<div id=wizardLevelCard class='card'>"
+    let endGameResults02 = "<img id='wizardLevelImg' src='assets/images/" + wizLevelImg + "'" + " class='card-img-top' alt='...'>"
+    let endGameResults03 = "<div class='card-body'>"
+    let endGameResults04 = "<h5 class='card-title'>Score: " + score + "</h5>"
+    let endGameResults05 = "<h5 class='card-title'>Wizarding Level: " + wizLevel + "</h5>"
+    let endGameResults06 = "</div></div>"
+    let endGameResultsBuild = endGameResults01 
+            + endGameResults02 
+            + endGameResults03 
+            + endGameResults04 
+            + endGameResults05 
+            + endGameResults06
+    $("#question").removeClass("bg-success bg-danger").html(endGameResultsBuild)
 }
 
 function initGame() {
@@ -192,4 +202,5 @@ function shuffleArray(array) {
         array[j] = temp;
     }
 }
+initGame();
 

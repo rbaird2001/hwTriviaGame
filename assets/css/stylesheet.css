@@ -18,6 +18,11 @@ section{
     top: 710px;
 }
 
+.scoreButton{
+    background: none;
+    border: none;
+}
+
 #questionRow{
     position: relative;
     top: 75px;
@@ -40,10 +45,21 @@ section{
     background: none;
 }
 
+#wizardLevelImg{
+    height: 250px;
+    width: 250px;
+}
+
+#wizardLevelCard{
+    width: 85%;
+    margin-left: 13%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    background: none;
+    border-style: none;
+}
+
 .cstmContainer{
     min-width: 300px;
     max-width: 960px;
 }
-
-/* .jumbotron{
-} */

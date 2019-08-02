@@ -1,11 +1,10 @@
-#scoreboard{
-    width: 78%;
+section{
+    min-width: 300px;
+    max-width: 1280px;
 }
 
-#question{
-    width: 50%;
+.cstmContainer{
+    min-width: 300px;
+    max-width: 960px;
 }
 
-#answers{
-    width: 100%;
-}

@@ -2,7 +2,8 @@ var seconds = 1000;
 var currQuestion = 0;
 var questionTimer;
 var questionCountdown;
-var setQuestionTime = 20;
+var answerSelected = true
+var setQuestionTime = 21;
 var setResponseTime = 4;
 var decrement = setQuestionTime
 var countCorrect = 0;
@@ -61,68 +62,75 @@ function initQuestion() {
     }
     else {
         let quest = arrQuestions[loadQuestNum];
-        //$("#answers li").remove();
+        $("#answers .answerRow").remove();
         $("#question").removeClass("bg-success bg-danger").html("<h5 class='text-center'>" + quest.question + "</h5>");
         $("<h3></h3>").attr("id", "countdown").appendTo("#question");
         decrement = setQuestionTime;
+        questionCountdown = setInterval(countdown, 1 * seconds)
         shuffleArray(quest.answers);
         for (i = 0; i < quest.answers.length; i++) {
             var answ = quest.answers[i];
             var answLetter = arrLetterAssignment[i];
-            var eleDivClose = "</div>"
-            var eleRow = "<div class='row my-2 bg-light border border-dark rounded'>"
             var eleAnswerIdColumn = "<div class='col-sm-1 p-0 m-0'>"
-            var eleAnswerLetter = "<h5 class='my-2 ml-2 mr-0' mx-1>" + answLetter + "</h5>";
+            var eleAnswerID = "<h5 class='my-2 ml-2 mr-0' mx-1>" + answLetter + "</h5>";
             var eleAnswerColumn = "<div class='col-sm-11 p-0 m-0'>";
-            var eleAnswer = "<h5 class='mx-1 my-2'>" + answ.answer + "</h5>" ;
-            buildAnswer += eleRow + eleAnswerIdColumn  + eleAnswerLetter + eleDivClose + eleAnswerColumn + eleAnswer + eleDivClose + eleDivClose
+            var eleAnswer = "<h5 class='mx-1 my-2'>" + answ.answer + "</h5>";
+            var buildAnswer = eleAnswerIdColumn + eleAnswerID + "</div>" + eleAnswerColumn + eleAnswer + "</div>";
+            $("<div class='row my-2 bg-light border border-dark rounded answerRow'>")
+                .html(buildAnswer)
+                .attr("data-correct",answ.correct)
+                .click(generateResponse(answ.correct))
+                .appendTo("#answers");
         }
-        $("#answers").html(buildAnswer)
-            //let answID = answLetter.substr(0, answLetter.length - 2);
-            // let eleAnswer = $("div class='col-sm-11'").html("<span id=" + answID + ">" + answLetter + ": </span>" + "<span>"+ answ.answer + "</span>")
-            //     .click(generateResponse(answ.correct))
-            //     .append("<br>")
-            //     .appendTo("#answers");
+        answerSelected = false
+        questionTimer = setTimeout(noAnswer, setQuestionTime * seconds);
+        //let answID = answLetter.substr(0, answLetter.length - 2);
+        // let eleAnswer = $("div class='col-sm-11'").html("<span id=" + answID + ">" + answLetter + ": </span>" + "<span>"+ answ.answer + "</span>")
+        //     .click(generateResponse(answ.correct))
+        //     .append("<br>")
+        //     .appendTo("#answers");
         //}
-        //questionTimer = setTimeout(noAnswer, setQuestionTime * seconds);
-        //questionCountdown = setInterval(countdown, 1 * seconds)
     }
 }
 function generateResponse(boolCorrect) {
     return function () {
-        clearTimeout(questionTimer);
-        clearInterval(questionCountdown);
-        setTimeout(initQuestion, setResponseTime * seconds);
-        if (boolCorrect) {
-            correct($(this));
-        }
-        else {
-            incorrect($(this));
+        if (!answerSelected) {
+            answerSelected = true
+            clearTimeout(questionTimer);
+            clearInterval(questionCountdown);
+            setTimeout(initQuestion, setResponseTime * seconds);
+            if (boolCorrect) {
+                correct($(this));
+            }
+            else {
+                incorrect($(this));
+            }
         }
     }
 }
 
 function correct(correctAnswer) {
     $("#question").addClass("bg-success").html("<h2>CORRECT!</h2>")
-    correctAnswer.addClass("bg-success");
+    correctAnswer.addClass("bg-success").removeClass("bg-light");
     countCorrect++
     $("#correctAnswers").html(countCorrect)
 }
 
 function incorrect(incorrectAnswer) {
     $("#question").addClass("bg-danger").html("<h2>Incorrect.</h2>");
-    incorrectAnswer.addClass("bg-danger")
-    $("li").filter("[data-correct=true]").addClass("bg-success");
+    incorrectAnswer.addClass("bg-danger").removeClass("bg-light")
+    $(".answerRow").filter("[data-correct=true]").addClass("bg-success").removeClass("bg-light");
     countIncorrect++;
     $("#incorrectAnswers").html(countIncorrect);
 }
 
 function noAnswer() {
+    answerSelected = true
     clearInterval(questionCountdown)
     setTimeout(initQuestion, setResponseTime * seconds);
     countIncorrect++;
     $("#question").addClass("bg-danger").html("<h2>No answer.</h2>");
-    $("li").filter("[data-correct=true]").addClass("bg-success");
+    $(".answerRow").filter("[data-correct=true]").addClass("bg-success").removeClass("bg-light");
     $("#incorrectAnswers").html(countIncorrect);
 }
 
@@ -140,8 +148,8 @@ function endGame() {
     clearInterval(questionCountdown);
     clearTimeout(questionTimer);
     $("#question").removeClass("bg-success bg-danger").addClass("bg-primary").html("Game Over");
-    $("#answers li").remove();
-    let score = Math.floor((countCorrect / questionsPerGame)*100);
+    $("#answers .answerRow").remove();
+    let score = Math.floor((countCorrect / questionsPerGame) * 100);
     let wizLevel = "";
     switch (true) {
         case score < 21:
@@ -168,14 +176,16 @@ function endGame() {
         .appendTo("#answers");
 }
 
-function initGame(){
+function initGame() {
     shuffleArray(arrQuestions);
+    currQuestion = 0
+    $("#answers").remove("li");
     var intro1 = $("<h2>Harry Potter Trivia</h2>");
     var intro2 = $("<h5>Questions are based on details from the seven volume Harry Potter novel series by J.K. Rowling.</h5>");
     var intro3 = $("<h5>You can play multiple rounds of 10 questions each from a collection of over 200 questions.</h5>");
     var begin = $("<button type='button' id='begin' class='btn-sm btn-dark'>Click to begin</button>").click(initQuestion);
-    $("#question").append(intro1,intro2,intro3,begin);
-    
+    $("#question").append(intro1, intro2, intro3, begin);
+
 }
 
 function shuffleArray(array) {

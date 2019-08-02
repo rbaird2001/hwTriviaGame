@@ -7,20 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/stylesheet.css">
-    <title>Document</title>
+    <!-- <link rel="stylesheet" href="assets/css/stylesheet.css"> -->
+    <title>HP Trivia</title>
 </head>
 
 <body>
-    <section class="m-5">
+    <section class="mx-auto my-5" style="min-width: 300px; max-width: 1280px">
+        <div class="container w-75">
         <div class="row">
-            <div class="col-sm d-flex justify-content-center">
-                <div id="scoreboard" class="d-flex justify-content-center">
-                    <button type="button" class="bg-info">Correct:
+            <div class="col-sm-12">
+                <div id="scoreboard" class="container d-flex justify-content-center w-50">
+                    <button type="button" class="btn-lg bg-info mx-1 rounded">Correct:
                         <span id=correctAnswers class="badge badge-info">0
                         </span>
                     </button>
-                    <button type="button" class="bg-info">Incorrect:
+                    <button type="button" class="btn-lg mx-1 bg-info rounded">Incorrect:
                         <span id="incorrectAnswers" class="badge badge-info">0
                         </span>
                     </button>
@@ -29,23 +30,25 @@
         </div>
         <div class="row my-1"></div>
         <div class="row">
-            <div class="col-sm">
-                <div class="d-flex justify-content-center">
-                    <div id="question" class="jumbotron">
+            <div class="col-md">
+                <div class="container d-flex justify-content-center w-75">
+                    <div id="question" class="jumbotron w-100" style="min-width: 350px;max-width: width 1080px;">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
         <div class="row"></div>
-        <div class="row">
+        <div id="answers" class="container w-75" style="min-width: 300px; max-width: width 1080px;">
+            <!-- <h3>what are the last three things you would want to eat in a cheese shop</h3> -->
+            <!-- <div id="answers" class="d-flex justify-content-center">
             <div class="col-sm">
-                <div class="d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
                         <ul id="answers" class="list-group list-group-flush">
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </section>

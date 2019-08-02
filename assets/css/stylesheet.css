@@ -3,13 +3,9 @@
 }
 
 #question{
-    width: 62%;
+    width: 50%;
 }
 
 #answers{
-    width: 78%;
-}
-
-li{
-
+    width: 100%;
 }

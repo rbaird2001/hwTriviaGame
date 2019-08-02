@@ -13,8 +13,8 @@
 
 <body>
     <section class="mx-auto my-5">
-        <div class="container w-75 cstmContainer mt-5">
-        <div class="row">
+        <div id="mainContainer" class="container w-75 cstmContainer mt-5">
+        <div id="scoreboardRow"class="row">
             <div class="col-sm-12">
                 <div id="scoreboard" class="container d-flex justify-content-center w-50">
                     <button type="button" class="btn-lg bg-info mx-1 rounded">Correct:
@@ -29,19 +29,20 @@
             </div>
         </div>
         <div class="row my-1"></div>
-        <div class="row">
+        <div id="questionRow" class="row">
             <div class="col-md">
-                <div class="container d-flex justify-content-center w-75 cstmContainer">
+                <div id="questionContainer" class="container d-flex justify-content-center w-75 cstmContainer">
                     <div id="question" class="jumbotron w-100">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        <div class="row"></div>
-        <div id="answers" class="container w-75 cstmContainer">
+    
+        <div id="answerGroupRow" class="row">
+            <div id="answers" class="container w-75 cstmContainer">
+            </div>
         </div>
-
+    </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

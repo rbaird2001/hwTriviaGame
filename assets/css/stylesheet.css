@@ -1,6 +1,43 @@
 section{
     min-width: 300px;
-    max-width: 1280px;
+    max-width: 1024px;
+    min-height: 768px;
+    background-image: url(../images/marauderMapBlank.jpg);
+    background-size: 1024px 768px;
+    background-repeat: no-repeat;
+}
+
+.answerRow{
+    border-color: darkgoldenrod;
+    border-style: ridge;
+    border-width: 1px;
+}
+
+#scoreboardRow{
+    position: relative;
+    top: 710px;
+}
+
+#questionRow{
+    position: relative;
+    top: 75px;
+    right:60px;
+}
+
+#answerGroupRow{
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+#questonContainer{
+    width:95%;
+}
+
+#question{
+    border: burlywood;
+    border-style: solid;
+    background: none;
 }
 
 .cstmContainer{
@@ -8,3 +45,5 @@ section{
     max-width: 960px;
 }
 
+/* .jumbotron{
+} */

@@ -63,8 +63,8 @@ function initQuestion() {
     else {
         let quest = arrQuestions[loadQuestNum];
         $("#answers .answerRow").remove();
-        $("#question").removeClass("bg-success bg-danger").html("<h5 class='text-center'>" + quest.question + "</h5>");
-        $("<h3></h3>").attr("id", "countdown").appendTo("#question");
+        var addTimer = "<h3 id='countdown' class='text-center'>" + setQuestionTime + "</h3>"
+        $("#question").removeClass("bg-success bg-danger").html("<h5 class='text-center'>" + quest.question + "</h5>" + addTimer);
         decrement = setQuestionTime;
         questionCountdown = setInterval(countdown, 1 * seconds)
         shuffleArray(quest.answers);
@@ -76,20 +76,14 @@ function initQuestion() {
             var eleAnswerColumn = "<div class='col-sm-11 p-0 m-0'>";
             var eleAnswer = "<h5 class='mx-1 my-2'>" + answ.answer + "</h5>";
             var buildAnswer = eleAnswerIdColumn + eleAnswerID + "</div>" + eleAnswerColumn + eleAnswer + "</div>";
-            $("<div class='row my-2 bg-light border border-dark rounded answerRow'>")
+            $("<div class='row my-2 rounded answerRow'>")
                 .html(buildAnswer)
-                .attr("data-correct",answ.correct)
+                .attr("data-correct", answ.correct)
                 .click(generateResponse(answ.correct))
                 .appendTo("#answers");
         }
         answerSelected = false
         questionTimer = setTimeout(noAnswer, setQuestionTime * seconds);
-        //let answID = answLetter.substr(0, answLetter.length - 2);
-        // let eleAnswer = $("div class='col-sm-11'").html("<span id=" + answID + ">" + answLetter + ": </span>" + "<span>"+ answ.answer + "</span>")
-        //     .click(generateResponse(answ.correct))
-        //     .append("<br>")
-        //     .appendTo("#answers");
-        //}
     }
 }
 function generateResponse(boolCorrect) {
@@ -147,45 +141,47 @@ function countdown() {
 function endGame() {
     clearInterval(questionCountdown);
     clearTimeout(questionTimer);
-    $("#question").removeClass("bg-success bg-danger").addClass("bg-primary").html("Game Over");
     $("#answers .answerRow").remove();
     let score = Math.floor((countCorrect / questionsPerGame) * 100);
     let wizLevel = "";
+    let wizLevelImg = ""
     switch (true) {
         case score < 21:
             wizLevel = "Dursleys";
+            wizLeveImg = "dursleys.jpg"
             break;
         case score < 41:
-            wizLevel = "muggle";
+            wizLevel = "Squib";
+            wizLevelImg = "squib.jpg";
             break;
         case score < 71:
-            wizLevel = "squib";
+            wizLevel = "Hogwarts Student";
+            wizLevelImg = "hogwartsStudent.jpg";
             break;
         case score < 91:
-            wizLevel = "Hogwarts Student";
+            wizLevel = "Auror";
+            wizLevelImg = "auror.img"
             break;
         default:
             wizLevel = "Headmaster";
+            wizLevelImg = "headmaster.jpg"
     }
-    $("<li>")
-        .html("Score: " + score + "%")
-        .appendTo("#answers");
-    $("<li>")
-        .addClass("list-group mb-2")
-        .html("Wizarding Level: " + wizLevel)
-        .appendTo("#answers");
+
+
+    $("#question").removeClass("bg-success bg-danger").html("Game Over");
 }
 
 function initGame() {
     shuffleArray(arrQuestions);
     currQuestion = 0
-    $("#answers").remove("li");
-    var intro1 = $("<h2>Harry Potter Trivia</h2>");
-    var intro2 = $("<h5>Questions are based on details from the seven volume Harry Potter novel series by J.K. Rowling.</h5>");
-    var intro3 = $("<h5>You can play multiple rounds of 10 questions each from a collection of over 200 questions.</h5>");
-    var begin = $("<button type='button' id='begin' class='btn-sm btn-dark'>Click to begin</button>").click(initQuestion);
-    $("#question").append(intro1, intro2, intro3, begin);
-
+    $("#question").removeClass("bg-primary bg-success bg-danger");
+    var introDiv = "<div id='gameIntro' class='container p-0 m-0 justify-content-center'>";
+    var intro1 = "<h2 class='text-center mb-3'>Harry Potter Trivia</h2>";
+    var intro2 = "<h5 class='text-center mb-3'>Questions are based on details from the seven volume Harry Potter novel series by J.K. Rowling.</h5>";
+    var intro3 = "<h5 class='text-center mb-3'>You can play multiple rounds of " + questionsPerGame + " questions each from a collection of over " + arrQuestions.length + " questions.</h5>";
+    var beginGame = $("<button type='button' id='begin' class='btn-block btn-dark m-auto'>Click to begin</button>").click(initQuestion);
+    $("#question").html(introDiv + intro1 + intro2 + intro3);
+    $("#gameIntro").append(beginGame);
 }
 
 function shuffleArray(array) {

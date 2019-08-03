@@ -1,10 +1,17 @@
-section{
-    min-width: 300px;
-    max-width: 1024px;
-    min-height: 768px;
+body{
     background-image: url(../images/marauderMapBlank.jpg);
-    background-size: 1024px 768px;
+    background-size: 99% 99%;
     background-repeat: no-repeat;
+}
+
+section{
+    /* min-width: 300px; */
+    max-width: 1024px;
+    max-height: 98%;
+    /* min-height: 768px; */
+    /* background-image: url(../images/marauderMapBlank.jpg); */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
 }
 
 .answerRow{
@@ -13,21 +20,21 @@ section{
     border-width: 1px;
 }
 
-#scoreboardRow{
+/* #scoreboardRow{
     position: relative;
     top: 710px;
-}
+} */
 
 .scoreButton{
     background: none;
     border: none;
 }
 
-#questionRow{
+/* #questionRow{
     position: relative;
     top: 75px;
     right:60px;
-}
+} */
 
 #answerGroupRow{
     position: relative;

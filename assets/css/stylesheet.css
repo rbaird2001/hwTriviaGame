@@ -1,29 +1,31 @@
-body{
-    background-image: url(../images/marauderMapBlank.jpg);
-    background-size: 99% 99%;
-    background-repeat: no-repeat;
+#mainContainer{
+    background: url(../IMAGES/marauderMapBlank.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-section{
-    /* min-width: 300px; */
-    max-width: 1024px;
-    max-height: 98%;
-    /* min-height: 768px; */
-    /* background-image: url(../images/marauderMapBlank.jpg); */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
-}
+#bg { position: fixed; top: 0; left: 0; }
+.bgwidth { width: 100%; }
+.bgheight { height: 100%; }
 
+#scoreboardRow{
+    margin-bottom: 3%;
+}
 .answerRow{
     border-color: darkgoldenrod;
     border-style: ridge;
     border-width: 1px;
 }
 
-/* #scoreboardRow{
-    position: relative;
-    top: 710px;
-} */
+ #scoreboardRow{
+    height: 10px;
+    margin-bottom: 5%;
+}
+.scoreLabel{
+    text-align: right;
+}
 
 .scoreButton{
     background: none;
@@ -38,18 +40,21 @@ section{
 
 #answerGroupRow{
     position: relative;
-    top: 50px;
-    left: 50px;
+    width: 93%;
+    margin-right: 0%;
+    margin-left: 3%;
+
 }
 
-#questonContainer{
-    width:95%;
+#questionContainer{
+    width: 95%;
 }
 
 #question{
     border: burlywood;
     border-style: solid;
     background: none;
+    margin-right: -4%;
 }
 
 #wizardLevelImg{
@@ -60,13 +65,13 @@ section{
 #wizardLevelCard{
     width: 85%;
     margin-left: 13%;
-    margin-top: 0%;
+    margin-top: 10px;
     margin-bottom: 0%;
     background: none;
     border-style: none;
 }
 
-.cstmContainer{
+/* .cstmContainer{
     min-width: 300px;
     max-width: 960px;
-}
+} */

@@ -63,7 +63,7 @@ function initQuestion() {
     else {
         let quest = arrQuestions[loadQuestNum];
         $("#answers .answerRow").remove();
-        var addTimer = "<h3 id='countdown' class='text-center'>" + setQuestionTime + "</h3>"
+        var addTimer = "<h5 id='countdown' class='text-center'>" + setQuestionTime + "</h5>"
         $("#question").removeClass("bg-success bg-danger").html("<h5 class='text-center'>" + quest.question + "</h5>" + addTimer);
         decrement = setQuestionTime;
         questionCountdown = setInterval(countdown, 1 * seconds)
@@ -202,5 +202,29 @@ function shuffleArray(array) {
         array[j] = temp;
     }
 }
-initGame();
+$(document).ready(function() {    
+
+	var theWindow = $(window),
+	    $bg = $("#bg"),
+	    aspectRatio = $bg.width() / $bg.height();
+	    			    		
+	function resizeBg() {
+		
+		if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+		    $bg
+		    	.removeClass()
+		    	.addClass('bgheight');
+		} else {
+		    $bg
+		    	.removeClass()
+		    	.addClass('bgwidth');
+		}
+					
+	}
+	                   			
+	theWindow.resize(resizeBg).trigger("resize");
+    initGame();
+});
+
+
 

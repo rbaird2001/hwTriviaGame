@@ -25,9 +25,9 @@ All code is tested against Chrome and Firefox's latest versions. No tests have b
 
 Project is solo project.
 
-Content for questions from The Seven Volume Harry Potter novel series written by J. K. Rowling. 
+Content for questions from The Seven Volume Harry Potter novel series written by J. K. Rowling. Copyright J. K. Rowling. 
 
-Research also conducted with aid from the Harry Potter Lexicon. [Harry Potter Lexicon] https://www.hp-lexicon.org/support-the-lexicon/
+Research also conducted with aid from the Harry Potter Lexicon. [Support the Harry Potter Lexicon](https://www.hp-lexicon.org/support-the-lexicon/)
 
 Images used are for demonstration purposes only. Images are subject to copyright and may not be distributed commercially. Images come from Harry Potter Series of films. Copyright Warner Bros. Studios.
 
@@ -45,13 +45,13 @@ Images used for this project are copyright Warner Bro. Studios.
 
 ## Acknowledgments
 
-* Chris Coyier, https://css-tricks.com/perfect-full-page-background-image/.
+* Chris Coyier, [Background Image](https://css-tricks.com/perfect-full-page-background-image/).
 
-* Stack Overflow contributors to Fisher-Yates Algorithm, https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array. 
+* Stack Overflow contributors to [Fisher-Yates Algorithm](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array). 
 
-* Steve Vander Ark, Harry Potter Lexicon https://www.hp-lexicon.org/support-the-lexicon/.
+* Steve Vander Ark, [Harry Potter Lexicon](https://www.hp-lexicon.org/support-the-lexicon/).
 
-* Matt Banz.
+* [Matt Banz](https://github.com/battmanz).
 
 * Andi Carlstrom.
 

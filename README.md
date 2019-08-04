@@ -66,3 +66,5 @@ Images used for this project are copyright Warner Bro. Studios.
 
 * Richard Baird.
 
+* Billie Thompson for readme.md guidance [PurpleBooth](https://github.com/PurpleBooth).
+

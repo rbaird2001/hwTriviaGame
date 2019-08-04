@@ -16,14 +16,10 @@ Chrome browswer (preferred) or Firefox.
 All code is tested against Chrome and Firefox's latest versions. No tests have been made against IE or Safari. However, code is based on compatibility to both browsers (IE version 10 or higher or Microsoft Edge recommended). Game does have sizing responsiveness, but playability deteriorates at mobile device levels. Media query to remove image backgrounds would improve this.
 
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
-Microsoft VS Code.
-JQuery: https://jquery.com/
-Bootstrap 4:  https://getbootstrap.com/
+* Microsoft VS Code.
+* JQuery: https://jquery.com/
+* Bootstrap 4:  https://getbootstrap.com/
 
 ## Contributing
 
@@ -31,12 +27,9 @@ Project is solo project.
 
 Content for questions from The Seven Volume Harry Potter novel series written by J. K. Rowling. 
 
-Research also conducted with aid from the Harry Potter Lexicon. https://www.hp-lexicon.org/. 
+Research also conducted with aid from the Harry Potter Lexicon. [Harry Potter Lexicon] https://www.hp-lexicon.org/support-the-lexicon/
 
 Images used are for demonstration purposes only. Images are subject to copyright and may not be distributed commercially. Images come from Harry Potter Series of films. Copyright Warner Bros. Studios.
-
-## Versioning
-
 
 ## Authors
 

@@ -3,54 +3,13 @@ var currQuestion = 0;
 var questionTimer;
 var questionCountdown;
 var answerSelected = true
-var setQuestionTime = 21;
-var setResponseTime = 1;
+var setQuestionTime = 26;
+var setResponseTime = 5;
 var decrement = setQuestionTime
 var countCorrect = 0;
 var countIncorrect = 0;
-var questionsPerGame = 5
-var arrQuestions = [
-    {
-        question: "How many staircases are there at Hogwarts?", played: false, answers: [
-            { answer: "142", correct: true },
-            { answer: "734", correct: false },
-            { answer: "286", correct: false },
-            { answer: "88", correct: false },
-        ]
-    },
-    {
-        question: "What need of Dumbledore's was fulfilled by the Room of Requirement?", played: false, answers: [
-            { answer: "Need to urinate.", correct: true },
-            { answer: "Need to people from  Voldemort.", correct: false },
-            { answer: "Need to train students secretly.", correct: false },
-            { answer: "Need to store the Pensive. ", correct: false },
-        ]
-    },
-    {
-        question: "Which character responded to being fired by getting intoxicated?", played: false, answers: [
-            { answer: "Winky.", correct: true },
-            { answer: "Hagrid.", correct: false },
-            { answer: "Cornelius Fudge.", correct: false },
-            { answer: "Vernon Dursley.", correct: false },
-        ]
-    },
-    {
-        question: "What do Harry Potter and Neville Longbottom have in common?", played: false, answers: [
-            { answer: "They share the same birthday.", correct: true },
-            { answer: "Both of their parents were killed when they were young.", correct: false },
-            { answer: "They are the same height.", correct: false },
-            { answer: "Both were marked for death by Voldemort.", correct: false },
-        ]
-    },
-    {
-        question: "Which of the following is NOT true about a Patronous?", played: false, answers: [
-            { answer: "The animal it produces determines its strength.", correct: true },
-            { answer: "They can be used to communicate.", correct: false },
-            { answer: "Producing one is very difficult.", correct: false },
-            { answer: "They can change to a different animal in certain circumstances.", correct: false },
-        ]
-    },
-]
+var questionsPerGame = 20
+
 var arrLetterAssignment = ["A. ", "B. ", "C. ", "D. ", "E. ", "F. ", "G. "];
 
 function initQuestion() {
@@ -64,7 +23,7 @@ function initQuestion() {
         let quest = arrQuestions[loadQuestNum];
         $("#answers .answerRow").remove();
         var addTimer = "<h5 id='countdown' class='text-center'>" + setQuestionTime + "</h5>"
-        $("#question").removeClass("bg-success bg-danger").html("<h5 class='text-center'>" + quest.question + "</h5>" + addTimer);
+        $("#question").removeClass("bg-success bg-danger").html("<h5 class='text-center'>" + currQuestion + ". " + quest.question + "</h5>" + addTimer);
         decrement = setQuestionTime;
         questionCountdown = setInterval(countdown, 1 * seconds)
         shuffleArray(quest.answers);
@@ -104,14 +63,14 @@ function generateResponse(boolCorrect) {
 }
 
 function correct(correctAnswer) {
-    $("#question").addClass("bg-success").html("<h2>CORRECT!</h2>")
+    $("#question").addClass("bg-success").html("<h2 class='text-center'>CORRECT!</h2>")
     correctAnswer.addClass("bg-success").removeClass("bg-light");
     countCorrect++
     $("#correctAnswers").html(countCorrect)
 }
 
 function incorrect(incorrectAnswer) {
-    $("#question").addClass("bg-danger").html("<h2>Incorrect.</h2>");
+    $("#question").addClass("bg-danger").html("<h2 class='text-center'>Incorrect.</h2>");
     incorrectAnswer.addClass("bg-danger").removeClass("bg-light")
     $(".answerRow").filter("[data-correct=true]").addClass("bg-success").removeClass("bg-light");
     countIncorrect++;
@@ -160,7 +119,7 @@ function endGame() {
             break;
         case score < 91:
             wizLevel = "Auror";
-            wizLevelImg = "auror.img"
+            wizLevelImg = "auror.jpg"
             break;
         default:
             wizLevel = "Headmaster";
@@ -187,8 +146,8 @@ function initGame() {
     $("#question").removeClass("bg-primary bg-success bg-danger");
     var introDiv = "<div id='gameIntro' class='container p-0 m-0 justify-content-center'>";
     var intro1 = "<h2 class='text-center mb-3'>Harry Potter Trivia</h2>";
-    var intro2 = "<h5 class='text-center mb-3'>Questions are based on details from the seven volume Harry Potter novel series by J.K. Rowling.</h5>";
-    var intro3 = "<h5 class='text-center mb-3'>You can play multiple rounds of " + questionsPerGame + " questions each from a collection of over " + arrQuestions.length + " questions.</h5>";
+    var intro2 = "<h5 class='text-center mb-3'>Questions and answers are taken from on details from the seven volume Harry Potter novel series by J.K. Rowling.</h5>";
+    var intro3 = "<h5 class='text-center mb-3'>Most questions are not found within the movies. So if you haven't read the novels, this may be a challenge.</h5>";
     var beginGame = $("<button type='button' id='begin' class='btn-block btn-dark m-auto'>Click to begin</button>").click(initQuestion);
     $("#question").html(introDiv + intro1 + intro2 + intro3);
     $("#gameIntro").append(beginGame);
